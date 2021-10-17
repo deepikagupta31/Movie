@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+        <button ion-button icon-only (click)="dismiss()" color="dark">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+    </ion-buttons>
+   <ion-title>{{movieListLiterals.movieListPageTitleLabel}}</ion-title>
+ </ion-navbar>
+</ion-header>
+<ion-content padding>
+ <div class="centered" *ngIf="loadingIndicator">{{movieListLiterals.loadingLabel}}</div>
+  <div class="topCentered"   *ngIf="items">{{movieListLiterals.resultFoundLabel}} "{{val}}"</div>
+        <hr>
+           <ion-list [virtualScroll]="items">
+              <ion-item *virtualItem="let item">
+                 <div>
+                  <img src="https://image.tmdb.org/t/p/w500{{item.poster_path}}" height="140px">
+                   </div>
+                    {{ item.original_title }}
+              </ion-item>
+           </ion-list>
+ <div *ngIf="items && !items.length">
+        {{movieListLiterals.noResultFoundLabel}} "{{val}}"
+ </div>
+</ion-content>

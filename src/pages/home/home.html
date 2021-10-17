@@ -1,0 +1,9 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>{{homeLiterals.searchPageTitleLabel}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<div class="pageStyle">
+   <ion-searchbar class="searchBar"  placeholder = "Search Movies" (keydown.enter)="newquery.value? goButtonClicked(newquery.value) : '' " #newquery></ion-searchbar>
+  <button class="searchButton" (click)="goButtonClicked(newquery.value)" ion-button color="primary" [disabled]="!newquery.value">{{homeLiterals.goLabel}}</button>
+</div>
